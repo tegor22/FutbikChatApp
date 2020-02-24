@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FutbikApp.Views.ChatPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView 
+                x:Name="MessagesListView"
+                ItemsSource="{Binding Messages}"
+                VerticalOptions="FillAndExpand" 
+                HasUnevenRows="True" 
+                Margin="0,0,0,70" 
+                SelectionMode="None"
+                SeparatorVisibility="None">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>First Item</x:String>
+                        <x:String>Second Item</x:String>
+                        <x:String>Third Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                        <x:String>Fourth Item</x:String>
+                        <x:String>Fifth Item</x:String>
+                        <x:String>Sixth Item</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout
+                                Direction="Column" 
+                                Margin="{Binding BlockMargin}" 
+                                Padding="10"
+                                BackgroundColor="{Binding BlockColor}" >
+
+                                <Label Text="{Binding Message}" 
+                                    d:Text="123 test 1223"
+                                    FontSize="14" 
+                                    FlexLayout.AlignSelf="Auto" />
+                                
+                                <StackLayout Orientation="Horizontal" 
+                                             FlexLayout.AlignSelf="End">
+                                    <Label Text="{Binding Author}" 
+                                        d:Text="Username"
+                                        FontSize="11" 
+                                        HorizontalTextAlignment="End" />
+
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0: dd/mm/yyyy hh:mm}'}" 
+                                        d:Text="12/10/2019 13:10"
+                                        FontSize="11" 
+                                        HorizontalTextAlignment="End" Padding="0,0,5,0" />
+                                </StackLayout>
+                            </FlexLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Editor Placeholder="Enter message..." x:Name="MessageTextEdit" MaxLength="1000" HorizontalOptions="FillAndExpand" />
+                <Button Text="Send" HorizontalOptions="End" Clicked="SendButton_Clicked" />
+                <!--<ImageButton 
+                    Source="send.png"                             
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>-->
+            </StackLayout>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
